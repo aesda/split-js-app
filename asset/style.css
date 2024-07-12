@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet');
+
+body {
+    font-family: Inter;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+
+}
+.Split-cost-wrapper {
+    width: 683px;
+    border: 1px solid black;
+    background-color: #FBFBFB;
+    padding: 35px 65px;
+    box-sizing: border-box;
+
+
+}
+h2 {
+    font-size: 32px;
+    margin: 0px 0 20px 0;
+
+
+}
+.unsettle-wrapper {
+    background-color: #D9D9D9;
+    padding: 15px;
+}
+h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+
+}
+.unsettle-wrapper > div {
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.unsettle-wrapper .amount {
+    font-size: 76px;
+    font-weight: 600;
+
+}
+.unsettle-wrapper button {
+    font-size: 25px;
+    color: #FBFBFB;
+    background-color: #182bbc;
+    border-radius: 20px;
+    border: 0;
+    padding: 10px 15px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.user-wrapper {
+    padding: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+.user-wrapper img {
+    border-radius: 50%;
+    max-width: 112px;
+
+}
+form {
+    background-color: #d9d9d9;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+}
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-item label {
+    font-size: 20px;
+    font-weight: bold;
+}
+.form-item label span {
+    color: red; 
+}
+.form-item input[type="text"] {
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+
+}
+.form-row input[type="submit"] {
+    padding: 10px 35px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-size: 25px;
+    cursor: pointer;
+
+
+
+} 
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+.form-row .form-item {
+    flex-grow: 2;
+}
+
+.expense-wrapper  {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 20px;
+}
+.expenses-item {
+    padding: 15px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    
+}  
+.expenses-item div {
+    display: flex;
+    gap: 20px;
+
+}
+.expenses-item div span {
+    font-weight: bold;
+    font-size: 24px;
+
+}
+.expenses-item div span:first-child {
+    flex-grow: 2;
+
+}
+.expenses-item .date {
+    font-size: 20px;
+}
+.settled {
+    background-color: #f2eeee;
+
+}
+.expenses-footer {
+    padding: 25px 0;
+    text-align: center;
+}
+.expenses-footer button {
+    font-size: 24px;
+    background: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+
+}
