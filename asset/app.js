@@ -40,7 +40,7 @@ function SplitCostApp() {
         let expenseElements = '';
         for(let expense of this.expenses) {
         expenseElements += `
-        <div class="expenses-item">
+        <div class="expenses-item ${expense.isSettled &&'settled'}">
             <div>
                 <span>${expense.description}</span>
                 <span>${expense.amount}</span>
@@ -73,7 +73,11 @@ function SplitCostApp() {
     this.calculateUnsettledAmount = function() {
         let total = 0;
         for(let expense of this.expenses) {
-            total = total + Number(expense.amount)
+            if(!expense.isSettled) {
+                total = total + Number(expense.amount)
+
+            }
+            
         }
         const unsettledAmount = total / this.users.length;
         this.unsettledAmount = unsettledAmount;
@@ -86,9 +90,25 @@ function SplitCostApp() {
             this.addExpenses(event);
         })
     }
+
+    this.addSettleNowEventListener = function() {
+        document.querySelector('#settleBtn').addEventListener('click', (event) => {
+            this.settleNow(event);
+        })
+    }
+    this.settleNow = function(event) {
+        console.log('Settling Now..')
+        this.expenses = this.expenses.map(expense => {
+            return {...expense, isSettled: true};
+        });
+        this.displayExpenses();
+        this.calculateUnsettledAmount();
+        this.displayUnsettledAmount();
+    }
 }
 const splitCostApp = new SplitCostApp();
 splitCostApp.displayUnsettledAmount();
+splitCostApp.addSettleNowEventListener();
 splitCostApp.addUser('San', 'sanis@gmail.com', '0412345656', 'https://randomuser.me/api/portraits/lego/6.jpg');
 splitCostApp.addUser('Sadn', 'sanisss@gmail.com', '041222345656', 'https://randomuser.me/api/portraits/lego/7.jpg');
 splitCostApp.displayUsers();
