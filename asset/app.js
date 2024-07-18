@@ -36,16 +36,55 @@ function SplitCostApp() {
         document.querySelector('.user-wrapper').innerHTML = userElements;
     }
 
+    this.displayExpenses = function() {
+        let expenseElements = '';
+        for(let expense of this.expenses) {
+        expenseElements += `
+        <div class="expenses-item">
+            <div>
+                <span>${expense.description}</span>
+                <span>${expense.amount}</span>
+            </div>
+           <div class= "date">${expense.amount}</div>
+        </div>
+        `
+    }
+      document.querySelector('.expense-wrapper').innerHTML = expenseElements;
+    }
+
     this.addExpenses = function(event) {
         event.preventDefault();
         console.log('Adding expenses...');
-        console.log('')
+
+        const description = document.querySelector('#description').value;
+        const amount = document.querySelector('#amount').value;
+        if(description && amount) {
+            const expense = new Expense(description, amount);
+            this.expenses.unshift(expense);
+            this.displayExpenses();
+            document.querySelector('form').reset();
+            this.calculateUnsettledAmount();
+            this.displayUnsettledAmount();
+
+        }
 
 
     }
+    this.calculateUnsettledAmount = function() {
+        let total = 0;
+        for(let expense of this.expenses) {
+            total = total + Number(expense.amount)
+        }
+        const unsettledAmount = total / this.users.length;
+        this.unsettledAmount = unsettledAmount;
+    }
+
+    
 
     this.addNewEventListener = function() {
-        document.querySelector('form').addEventListener('submit', this.addExpenses)
+        document.querySelector('form').addEventListener('submit', (event) => {
+            this.addExpenses(event);
+        })
     }
 }
 const splitCostApp = new SplitCostApp();
@@ -55,6 +94,9 @@ splitCostApp.addUser('Sadn', 'sanisss@gmail.com', '041222345656', 'https://rando
 splitCostApp.displayUsers();
 splitCostApp.addNewEventListener();
 
-console.log(splitCostApp);
+
+
+
+
 
 
