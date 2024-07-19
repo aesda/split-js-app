@@ -27,6 +27,7 @@ function SplitCostApp() {
     this.addUser = function(name, email, mobile, photo) {
         const user = new User(name, email, mobile, photo);
         this.users.push(user);
+        this.displayUsers();
     }
     this.displayUsers = function() {
         let userElements = '';
@@ -71,6 +72,7 @@ function SplitCostApp() {
 
     }
     this.calculateUnsettledAmount = function() {
+
         let total = 0;
         for(let expense of this.expenses) {
             if(!expense.isSettled) {
@@ -101,9 +103,20 @@ function SplitCostApp() {
         this.expenses = this.expenses.map(expense => {
             return {...expense, isSettled: true};
         });
+
         this.displayExpenses();
         this.calculateUnsettledAmount();
         this.displayUnsettledAmount();
+        
+    }
+    this.anUserEventListener = function() {
+        document.querySelector("#addNewUser").addEventListener('click', () => {
+            const randomValue = parseInt(Math.random() * 9);
+            this.addUser('San', 'sanis@gmail.com', '0412345656', `https://randomuser.me/api/portraits/lego/${randomValue}.jpg`);
+            this.calculateUnsettledAmount();
+            this.displayUnsettledAmount();
+        })
+        
     }
 }
 const splitCostApp = new SplitCostApp();
@@ -113,6 +126,7 @@ splitCostApp.addUser('San', 'sanis@gmail.com', '0412345656', 'https://randomuser
 splitCostApp.addUser('Sadn', 'sanisss@gmail.com', '041222345656', 'https://randomuser.me/api/portraits/lego/7.jpg');
 splitCostApp.displayUsers();
 splitCostApp.addNewEventListener();
+splitCostApp.anUserEventListener();
 
 
 
