@@ -46,7 +46,7 @@ function SplitCostApp() {
                 <span>${expense.description}</span>
                 <span>${expense.amount}</span>
             </div>
-           <div class= "date">${expense.amount}</div>
+           <div class= "date">${expense.date}</div>
         </div>
         `
     }
